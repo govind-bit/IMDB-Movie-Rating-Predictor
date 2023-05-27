@@ -63,6 +63,6 @@ genre = stringToInt(genre)
 
 budget = int(input("Enter the budget for the movie: "))
 
-pickled_model.predict([[genre, actor1, director, actor2, budget]])
+prediction = pickled_model.predict([[genre, actor1, director, actor2, budget]])
 
 print(prediction[0]/10)
