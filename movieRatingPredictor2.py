@@ -1,4 +1,5 @@
 import os
+import pickle
 import numpy as np
 import pandas as pd
 from sklearn import tree
@@ -41,6 +42,9 @@ model = tree.DecisionTreeClassifier()
 
 model.fit(X_train, y_train)
 
+pickle.dump(model,open('model.pkl','wb'))
+pickled_model = pickle.load(open('model.pkl','rb'))
+
 director = input("Enter the name of the director: ")
 director = director.lower()
 director = stringToInt(director)
@@ -59,6 +63,6 @@ genre = stringToInt(genre)
 
 budget = int(input("Enter the budget for the movie: "))
 
-prediction = model.predict([[genre, actor1, director, actor2, budget]])
+pickled_model.predict([[genre, actor1, director, actor2, budget]])
 
 print(prediction[0]/10)
